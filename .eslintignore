@@ -1,0 +1,12 @@
+node_modules
+build
+dist
+
+**/*.d.ts
+*.config.js
+*.eslintrc.json
+.eslintrc.js
+.babel.config.js
+
+*.css
+*.svg
