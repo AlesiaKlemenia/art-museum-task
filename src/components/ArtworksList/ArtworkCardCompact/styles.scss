@@ -17,6 +17,15 @@
   }
 }
 
+.compact-card-link {
+  width: 416px;
+  height: 130px;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .compact-image-wrapper {
   margin: 25px 0 25px 13px;
   width: 80px;

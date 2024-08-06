@@ -6,6 +6,7 @@ import paths from "@/constants/paths";
 const ErrorBoundary = lazy(() => import("@components/ErrorBoundary"));
 const Home = lazy(() => import("@/pages/Home"));
 const DetailInfo = lazy(() => import("@/pages/DetailInfo"));
+const Favorites = lazy(() => import("@/pages/Favorites"));
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,11 @@ const router = createBrowserRouter([
   {
     path: paths.detail.info.route,
     element: <DetailInfo />,
+    errorElement: <ErrorBoundary />,
+  },
+  {
+    path: paths.favorites,
+    element: <Favorites />,
     errorElement: <ErrorBoundary />,
   },
 ]);

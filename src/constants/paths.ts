@@ -1,6 +1,5 @@
 const paths = {
   home: "/",
-  detailInfo: "",
   detail: {
     info: {
       path: "/details/",
@@ -8,6 +7,7 @@ const paths = {
     },
     url: "/details/",
   },
+  favorites: "/favorites",
   notFound: "*",
 } as const;
 
