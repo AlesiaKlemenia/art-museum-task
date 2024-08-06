@@ -26,6 +26,10 @@ h1 {
   font-weight: bold;
 }
 
+h2 {
+  margin: 0;
+}
+
 button {
   -webkit-appearance: none;
   border-radius: 0;
@@ -58,4 +62,12 @@ button {
 
 .deep-orange {
   color: variables.$deep-orange;
+}
+
+.pale-orange {
+  color: variables.$pale-orange;
+}
+
+.dark-gray {
+  color: variables.$dark-gray-color;
 }

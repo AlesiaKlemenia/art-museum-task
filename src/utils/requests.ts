@@ -1,7 +1,12 @@
 import axios from "axios";
 
-import { getArtworkBriefInfo, getArtworkBySearch } from "@/constants/url";
+import {
+  getArtworkBriefInfo,
+  getArtworkBySearch,
+  getArtworkFullInfo,
+} from "@/constants/url";
 import { IArtworkBriefInfo } from "@/interfaces/IArtworkBriefInfo";
+import { IArtworkFullInfo } from "@/interfaces/IArtworkFullInformation";
 import { IArtworkSearchInfo } from "@/interfaces/IArtworkSearchInfo";
 import { IPaginationList } from "@/interfaces/IPaginationList";
 
@@ -37,6 +42,19 @@ export const getSpecials = async (
     })
     .then((response) => {
       return response.data as IPaginationList<IArtworkBriefInfo>;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
+
+export const getArtworkDetailInfo = async (
+  id: string,
+): Promise<IArtworkFullInfo> => {
+  return axios
+    .get<IArtworkFullInfo>(getArtworkFullInfo(id))
+    .then((response) => {
+      return response.data as IArtworkFullInfo;
     })
     .catch((error) => {
       return error;
