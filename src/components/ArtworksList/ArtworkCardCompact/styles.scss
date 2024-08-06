@@ -1,0 +1,67 @@
+@use "@/utils/_variables";
+
+.compact-card-wrapper {
+  width: 416px;
+  height: 130px;
+  background-color: variables.$white-color;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  position: relative;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.015);
+  }
+}
+
+.compact-image-wrapper {
+  margin: 25px 0 25px 13px;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+
+  img {
+    min-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+}
+
+.compact-artwork-brief-info {
+  width: 219px;
+  line-height: 26.3px;
+  font-family: "Inter", sans-serif;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.compact-artwork-brief-title {
+  color: variables.$dark-gray-color;
+  display: block;
+  max-width: 100%;
+  height: 27px;
+  font-size: 18px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.compact-artwork-brief-artist-title {
+  margin: 1px 0 2px 0;
+  color: variables.$pale-orange;
+  font-size: 16px;
+  font-weight: 400;
+  text-overflow: ellipsis;
+}
+
+.compact-artwork-brief-is-public {
+  color: variables.$dark-gray-color;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 12px;
+}

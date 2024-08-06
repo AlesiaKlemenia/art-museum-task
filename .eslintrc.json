@@ -90,7 +90,8 @@
     "import/first": "error",
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
-    "react/require-default-props": "warn"
+    "react/require-default-props": "warn",
+    "react/jsx-props-no-spreading": "off"
   },
   "settings": {
     "import/resolver": {
