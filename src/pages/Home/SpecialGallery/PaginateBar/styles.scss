@@ -1,0 +1,27 @@
+@use "@/utils/_variables.scss";
+
+.paginate-bar {
+  height: 30px;
+  margin-top: 24px;
+  display: flex;
+  align-self: flex-end;
+  gap: 10px;
+}
+
+.paginate-bar-button {
+  width: 30px;
+  height: 30px;
+  color: variables.$dark-gray-color;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 24px;
+  text-align: center;
+}
+
+.paginate-bar .active {
+  background-color: variables.$deep-orange;
+  border-radius: 4px;
+  color: variables.$white-color;
+  font-weight: bold;
+  line-height: 23px;
+}

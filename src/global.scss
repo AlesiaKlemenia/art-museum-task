@@ -1,3 +1,5 @@
+@use "@/utils/_variables.scss";
+
 @import "https://fonts.googleapis.com/css2?family=Inter&Lexend+Deca:wght@100..900&display=swap";
 
 body {
@@ -18,6 +20,25 @@ a {
   text-decoration: none;
 }
 
+h1 {
+  margin: 0;
+  font-size: 64px;
+  font-weight: bold;
+}
+
+button {
+  -webkit-appearance: none;
+  border-radius: 0;
+  text-align: inherit;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  color: inherit;
+  font: inherit;
+}
+
 .container {
   display: flex;
   justify-content: space-between;
@@ -33,4 +54,8 @@ a {
       margin: 0 20px;
     }
   }
+}
+
+.deep-orange {
+  color: variables.$deep-orange;
 }

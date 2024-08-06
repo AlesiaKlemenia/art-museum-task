@@ -1,0 +1,124 @@
+@use "@/utils/_variables";
+
+@mixin burgerSpan {
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: variables.$white-color;
+}
+
+header {
+  height: 127px;
+  background: linear-gradient(
+    90deg,
+    rgba(52, 51, 51, 1) 17%,
+    rgba(72, 72, 72, 1) 59%,
+    rgba(40, 40, 40, 1) 99%
+  );
+}
+
+nav {
+  display: flex;
+  align-items: center;
+
+  margin: auto 0;
+
+  font-size: 18px;
+  font-weight: 400;
+  color: variables.$white-color;
+
+  @media screen and (max-width: 480px) {
+    nav {
+      display: inline;
+    }
+  }
+}
+
+#menu-toggle {
+  opacity: 0;
+
+  &:checked ~ .menu-button > span {
+    transform: rotate(45deg);
+  }
+
+  &:checked ~ .menu-button > span::before {
+    top: 0;
+    transform: rotate(0);
+    background: variables.$white-color;
+  }
+
+  &:checked ~ .menu-button > span::after {
+    top: 0;
+    transform: rotate(90deg);
+    background: variables.$white-color;
+  }
+
+  &:checked ~ .menu-button {
+    visibility: visible;
+    left: 0;
+    margin: 0;
+  }
+}
+
+.menu-button {
+  transition-duration: 0.25s;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  z-index: 2;
+
+  span {
+    @include burgerSpan;
+
+    &::before {
+      @include burgerSpan;
+      content: "";
+      top: -8px;
+      transition-duration: 0.25s;
+    }
+
+    &::after {
+      @include burgerSpan;
+      content: "";
+      top: 8px;
+      transition-duration: 0.25s;
+    }
+  }
+
+  @media screen and (min-width: 480px) {
+    display: none;
+  }
+}
+
+.menu-box {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    height: 15em;
+    margin: 0 0 0 0;
+    padding: 0.6em 0;
+    text-align: center;
+    background-color: #2d303a;
+    box-shadow: 1px 0 6px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    transition-duration: 0.5s;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .logo {
+    padding-right: 0;
+  }
+}

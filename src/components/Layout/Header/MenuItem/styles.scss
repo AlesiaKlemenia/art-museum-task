@@ -1,0 +1,24 @@
+@use "@/utils/_variables";
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  list-style: none;
+  color: variables.$white-color;
+
+  @media screen and (max-width: 480px) {
+    display: block;
+    padding: 12px 24px;
+    transition-duration: 0.5s;
+
+    &:hover {
+      background-color: #4f5464;
+    }
+  }
+}
+
+.menu-item span {
+  text-decoration: none;
+}

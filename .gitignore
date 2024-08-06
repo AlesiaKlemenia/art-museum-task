@@ -41,3 +41,4 @@ sketch
 
 yarn-debug.log*
 yarn-error.log*
+yarn.lock

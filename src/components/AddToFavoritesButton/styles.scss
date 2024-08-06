@@ -1,0 +1,16 @@
+@use "@/utils/_variables";
+
+.add-to-favorites-wrapper {
+  width: 59px;
+  height: 59px;
+  background-color: #f9f9f9;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    color: variables.$deep-orange;
+  }
+}

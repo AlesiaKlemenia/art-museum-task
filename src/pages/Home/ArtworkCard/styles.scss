@@ -1,0 +1,95 @@
+@use "@/utils/_variables";
+
+.card-wrapper {
+  width: 387px;
+  height: 514px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.015);
+  }
+}
+
+.image-wrapper {
+  width: 100%;
+  height: 444px;
+  position: absolute;
+  overflow: hidden;
+
+  img {
+    min-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+}
+
+.artwork-brief-info-wrapper {
+  width: 334px;
+  height: 132px;
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  background-color: variables.$white-color;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.artwork-brief-info {
+  margin: 17px 8px 17px 24px;
+  line-height: 26.3px;
+  background-color: variables.$white-color;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.artwork-brief-title {
+  color: variables.$dark-gray-color;
+  max-width: 219px;
+  font-size: 18px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.artwork-brief-artist-title {
+  margin: 1px 0 2px 0;
+  max-width: 219px;
+  color: variables.$pale-orange;
+  font-size: 16px;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.artwork-brief-is-public {
+  color: variables.$dark-gray-color;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+.add-to-favorites-wrapper {
+  margin-right: 24px;
+  width: 59px;
+  height: 59px;
+  background-color: #f9f9f9;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    color: variables.$deep-orange;
+  }
+}
