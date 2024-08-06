@@ -1,7 +1,9 @@
 import "./styles.scss";
 
 import AddToFavoritesButton from "@components/AddToFavoritesButton";
+import { Link } from "react-router-dom";
 
+import paths from "@/constants/paths";
 import { IArtworkBriefInfo } from "@/interfaces/IArtworkBriefInfo";
 
 const ArtworkCard = ({
@@ -14,7 +16,7 @@ const ArtworkCard = ({
   const imageURL = `https://www.artic.edu/iiif/2/${image_id}/full/843,/0/default.jpg`;
 
   return (
-    <div className="card-wrapper">
+    <Link to={`${paths.detail.info.path}${id}`} className="card-wrapper">
       <div className="image-wrapper">
         <img src={imageURL} alt={title} />
       </div>
@@ -30,7 +32,7 @@ const ArtworkCard = ({
         </div>
         <AddToFavoritesButton id={id} image_id={image_id} />
       </div>
-    </div>
+    </Link>
   );
 };
 
