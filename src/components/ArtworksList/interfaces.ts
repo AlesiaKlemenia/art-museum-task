@@ -1,3 +1,3 @@
 export interface IArtworksListProps {
-  size: "small" | "big";
+  type: "recommendations" | "favorites";
 }

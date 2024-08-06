@@ -1,11 +1,12 @@
 import "./styles.scss";
 
 import MenuItem from "@components/Layout/Header/MenuItem";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import Bookmark from "@/assets/icons/bookmark.svg";
 import Home from "@/assets/icons/home.svg";
 import museumLogoDark from "@/assets/img/museum-logo-dark.png";
+import paths from "@/constants/paths";
 
 const Header = (): JSX.Element => {
   const location = useLocation();
@@ -22,13 +23,13 @@ const Header = (): JSX.Element => {
           <ul className="menu-box">
             <li>
               {location.pathname !== "/" && (
-                <a href="/#">
+                <Link to={paths.home}>
                   <MenuItem icon={<Home />} textField="Home" />
-                </a>
+                </Link>
               )}
-              <a href="/#">
+              <Link to={paths.favorites}>
                 <MenuItem icon={<Bookmark />} textField="Your favorites" />
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>

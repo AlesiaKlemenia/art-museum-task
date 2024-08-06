@@ -5,29 +5,53 @@ import { IArtworksListProps } from "@components/ArtworksList/interfaces";
 import React, { useEffect, useState } from "react";
 
 import { IArtworkBriefInfo } from "@/interfaces/IArtworkBriefInfo";
-import { getSpecials } from "@/utils/requests";
+import { ISessionStorageData } from "@/interfaces/ISessionStorageData";
+import { getFavorite, getSpecials } from "@/utils/requests";
 
-const ArtworksList = ({ size }: IArtworksListProps): JSX.Element => {
+const ArtworksList = ({ type }: IArtworksListProps): JSX.Element => {
   const [gallery, setGallery] = useState<IArtworkBriefInfo[]>([]);
+  const [favoriteIds, setFavoriteIds] = useState<ISessionStorageData[]>([]);
 
   useEffect(() => {
-    getSpecials(25, size === "small" ? 9 : 18).then((res) => {
-      setGallery(res.data);
+    if (type === "recommendations") {
+      getSpecials(25, 9).then((res) => {
+        setGallery(res.data);
+      });
+    } else {
+      const favoriteArtworksIds = JSON.parse(
+        sessionStorage.getItem("favorites"),
+      );
+      if (!favoriteArtworksIds) {
+        return;
+      }
+
+      setFavoriteIds(favoriteArtworksIds);
+    }
+  }, [type]);
+
+  useEffect(() => {
+    if (!favoriteIds || favoriteIds.length === 0) {
+      return;
+    }
+
+    getFavorite(favoriteIds).then((result) => {
+      setGallery(result.data);
     });
-  }, []);
+  }, [favoriteIds]);
 
   return (
     <div className="artworks-list-wrapper">
-      {gallery.map((card: IArtworkBriefInfo) => (
-        <ArtworkCardCompact
-          key={card.id}
-          id={card.id}
-          title={card.title}
-          artist_title={card.artist_title}
-          is_public_domain={card.is_public_domain}
-          image_id={card.image_id}
-        />
-      ))}
+      {gallery &&
+        gallery.map((card: IArtworkBriefInfo) => (
+          <ArtworkCardCompact
+            key={card.id}
+            id={card.id}
+            title={card.title}
+            artist_title={card.artist_title}
+            is_public_domain={card.is_public_domain}
+            image_id={card.image_id}
+          />
+        ))}
     </div>
   );
 };

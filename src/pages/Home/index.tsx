@@ -48,7 +48,7 @@ const Home = (): JSX.Element => {
         smallOrangeText="Here some more"
         bigGrayText="Other works for you"
       />
-      <ArtworksList size="small" />
+      <ArtworksList type="recommendations" />
     </Layout>
   );
 };

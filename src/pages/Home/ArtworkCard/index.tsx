@@ -16,10 +16,12 @@ const ArtworkCard = ({
   const imageURL = `https://www.artic.edu/iiif/2/${image_id}/full/843,/0/default.jpg`;
 
   return (
-    <Link to={`${paths.detail.info.path}${id}`} className="card-wrapper">
-      <div className="image-wrapper">
-        <img src={imageURL} alt={title} />
-      </div>
+    <div className="card-wrapper">
+      <Link to={`${paths.detail.info.path}${id}`} className="card-link">
+        <div className="image-wrapper">
+          <img src={imageURL} alt={title} />
+        </div>
+      </Link>
       <div className="artwork-brief-info-wrapper">
         <div className="artwork-brief-info">
           <span className="artwork-brief-title">{title}</span>
@@ -32,7 +34,7 @@ const ArtworkCard = ({
         </div>
         <AddToFavoritesButton id={id} image_id={image_id} />
       </div>
-    </Link>
+    </div>
   );
 };
 
