@@ -20,12 +20,14 @@ const Header = (): JSX.Element => {
             <span />
           </label>
           <ul className="menu-box">
-            <li>
-              {location.pathname !== "/" && (
+            {location.pathname !== "/" && (
+              <li>
                 <a href="/#">
                   <MenuItem icon={<Home />} textField="Home" />
                 </a>
-              )}
+              </li>
+            )}
+            <li>
               <a href="/#">
                 <MenuItem icon={<Bookmark />} textField="Your favorites" />
               </a>
