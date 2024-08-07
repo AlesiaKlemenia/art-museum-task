@@ -40,7 +40,7 @@ const ArtworksList = ({ type }: IArtworksListProps): JSX.Element => {
   }, [favoriteIds]);
 
   return (
-    <div className="artworks-list-wrapper">
+    <ul className="artworks-list-wrapper">
       {gallery &&
         gallery.map((card: IArtworkBriefInfo) => (
           <ArtworkCardCompact
@@ -52,7 +52,7 @@ const ArtworksList = ({ type }: IArtworksListProps): JSX.Element => {
             image_id={card.image_id}
           />
         ))}
-    </div>
+    </ul>
   );
 };
 
