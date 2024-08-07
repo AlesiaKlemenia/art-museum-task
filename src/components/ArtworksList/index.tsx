@@ -17,7 +17,7 @@ const ArtworksList = ({ size }: IArtworksListProps): JSX.Element => {
   }, []);
 
   return (
-    <div className="artworks-list-wrapper">
+    <ul className="artworks-list-wrapper">
       {gallery.map((card: IArtworkBriefInfo) => (
         <ArtworkCardCompact
           key={card.id}
@@ -28,7 +28,7 @@ const ArtworksList = ({ size }: IArtworksListProps): JSX.Element => {
           image_id={card.image_id}
         />
       ))}
-    </div>
+    </ul>
   );
 };
 
