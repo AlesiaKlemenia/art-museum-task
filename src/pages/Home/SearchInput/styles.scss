@@ -1,70 +1,76 @@
 @use "@/utils/_variables.scss";
 
-.search-input {
+.autocomplete {
+  position: relative;
+  display: inline-block;
   width: 762px;
-  height: 64px;
-  padding: 16px;
-  background: rgba(variables.$dark-gray-color, 0.05);
-  border-radius: 16px;
-  border: none;
-  font-family: "Inter", sans-serif;
-  color: variables.$dark-gray-color;
-}
 
-.search-input::placeholder {
-  color: rgba(variables.$dark-gray-color, 0.5);
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.search-input:focus-visible {
-  outline: none;
+  input {
+    width: 762px;
+    height: 64px;
+    border-radius: 16px;
+    border: none;
+    background-color: rgba(variables.$dark-gray-color, 0.05);
+    background-image: url("@/assets/icons/search.svg");
+    background-repeat: no-repeat;
+    background-position: 95% center;
+    padding: 16px;
+    font-family: "Inter", sans-serif;
+  }
+  input::placeholder {
+    color: rgba(variables.$dark-gray-color, 0.5);
+    font-size: 14px;
+    font-weight: 400;
+  }
+  input:focus-visible {
+    outline: 1px rgba(variables.$dark-gray-color, 0.5) solid;
+  }
 }
 
 .error-message {
-  margin: 0 0 0 20px;
+  margin: 0;
+  text-indent: 15px;
   font-size: 14px;
+  color: variables.$pale-orange;
   position: absolute;
-  color: variables.$deep-orange;
+  overflow: auto;
 }
 
-.search-results-container {
-  margin-top: 18px;
-  height: 120px;
+.suggestions-container {
+  height: 200px;
   width: 47.68em;
-  scrollbar-width: none; /* Firefox */
-  /* display: none; */
+  border-radius: 16px;
+  border: 1px solid rgba(variables.$dark-gray-color, 0.2);
+  background: #ffffff;
+  scrollbar-width: none;
   position: absolute;
   overflow: auto;
   &::-webkit-scrollbar {
     display: none;
   }
-}
 
-.search-results-column {
-  padding-left: 0;
-  text-indent: 20px;
-}
-/*
-.search-results-column {
-  display: contents;
-  float: none;
-
-  position: absolute;
-  left: 0; top: 100%;
-  width: 100%;
-}
-*/
-.search-results-column ul {
-  width: 100%;
-  font-weight: bold;
-  height: 51px;
-  padding-left: 0;
-  background: rgba(variables.$dark-gray-color, 0.05);
-  display: block;
-  border-bottom: 1px solid white;
-  &:hover {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.14);
+  a {
+    width: 100%;
+    height: 19px;
+    padding: 16px;
+    background: rgba(variables.$dark-gray-color, 0.05);
+    color: variables.$dark-gray-color;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(variables.$dark-gray-color, 0.2);
+    &:hover {
+      background: rgba(variables.$dark-gray-color, 0.2);
+    }
   }
+  a.active {
+    background: rgba(variables.$dark-gray-color, 0.2);
+  }
+}
+
+.suggestion-item {
+  font-weight: bold;
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
