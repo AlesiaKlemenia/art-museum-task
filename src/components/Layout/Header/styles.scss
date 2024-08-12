@@ -98,7 +98,6 @@ nav {
 .menu-box {
   display: flex;
   flex-direction: row;
-  list-style-type: none;
   gap: 16px;
 
   @media screen and (max-width: 480px) {

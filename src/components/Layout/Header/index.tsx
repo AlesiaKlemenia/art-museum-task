@@ -12,7 +12,7 @@ const Header = (): JSX.Element => {
   const location = useLocation();
 
   return (
-    <header className="header">
+    <header>
       <div className="container">
         <img src={museumLogoDark as string} alt="Art Museum Logo" />
         <nav>
