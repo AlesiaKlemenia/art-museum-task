@@ -1,8 +1,9 @@
 .special-gallery {
   width: 100%;
   min-height: 514px;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 1rem;
 }
 
 .special-gallery-loader {

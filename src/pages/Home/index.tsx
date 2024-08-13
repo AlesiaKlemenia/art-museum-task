@@ -11,11 +11,10 @@ import SpecialGallery from "@/pages/Home/SpecialGallery";
 const Home = (): JSX.Element => {
   return (
     <Layout>
-      <h1 className="hello-message">
+      <h1 className="hello-message dark-gray">
         {"Let's find some "}
         <span className="deep-orange">art</span>
-        <br />
-        here!
+        {" here!"}
       </h1>
       <SearchInput />
       <SectionTitle

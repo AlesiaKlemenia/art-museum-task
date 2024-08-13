@@ -4,9 +4,9 @@
   display: flex;
   align-items: center;
   gap: 4px;
-
   list-style: none;
   color: variables.$white-color;
+  font-size: 1.125rem;
 
   @media screen and (max-width: 480px) {
     display: block;
