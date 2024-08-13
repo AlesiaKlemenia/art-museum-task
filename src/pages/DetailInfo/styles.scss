@@ -7,11 +7,6 @@
   display: flex;
   justify-content: space-between;
   gap: 80px;
-
-  img {
-    max-width: 560px;
-    max-height: calc(100vh - 254px - 240px);
-  }
 }
 
 .artwork-detail-info-wrapper {
