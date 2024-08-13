@@ -1,12 +1,13 @@
 @use "@/utils/_variables";
 
 .compact-card-wrapper {
-  width: 26rem;
-  height: 8.125rem;
+  width: 24.375rem;
+  padding: 1rem 13px;
   background-color: variables.$white-color;
   outline: 1px variables.$white-card-border solid;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   position: relative;
   transition: transform 0.2s;
   &:hover {
@@ -21,7 +22,7 @@
 }
 
 .compact-image-wrapper {
-  margin: 25px 0 25px 13px;
+  margin: auto 0;
   width: 80px;
   height: 80px;
   overflow: hidden;
