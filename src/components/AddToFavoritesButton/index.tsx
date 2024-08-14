@@ -40,6 +40,7 @@ const AddToFavoritesButton = ({
       type="button"
       className="add-to-favorites-wrapper"
       onClick={toggleFavorite}
+      data-testid="add-to-favorites-button"
     >
       {isFavorite ? <BookmarkFilled /> : <Bookmark />}
     </button>

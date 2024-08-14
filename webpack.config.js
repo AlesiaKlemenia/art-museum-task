@@ -2,7 +2,6 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
-// Here goes all configuration
 module.exports = {
   entry: "./src/index.tsx",
   output: {

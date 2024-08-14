@@ -10,7 +10,7 @@ const SortToggle = ({ value, setValue }: ISortToggleProps): JSX.Element => {
       htmlFor="sort-toggle"
       onClick={setValue}
     >
-      <input id="sort-checkbox" type="checkbox" checked={value} />
+      <input id="sort-checkbox" type="checkbox" checked={value} readOnly />
       <span className="slider" />
     </label>
   );
