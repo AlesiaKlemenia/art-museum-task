@@ -34,6 +34,12 @@
   overflow: auto;
 }
 
+.sort-bar {
+  margin: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
 .suggestions-container {
   height: 200px;
   width: 100%;

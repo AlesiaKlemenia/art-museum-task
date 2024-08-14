@@ -11,16 +11,17 @@ import { IArtworkFullInfo } from "@/interfaces/IArtworkFullInformation";
 import { IArtworkSearchInfo } from "@/interfaces/IArtworkSearchInfo";
 import { IPaginationList } from "@/interfaces/IPaginationList";
 import { ISessionStorageData } from "@/interfaces/ISessionStorageData";
+import { ISortParams } from "@/pages/Home/SearchInput/interfaces";
 
 export const getApiSuggestions = async (
   word: string,
+  options: ISortParams,
 ): Promise<IPaginationList<IArtworkSearchInfo>> => {
   return axios
-    .get<IPaginationList<IArtworkSearchInfo>>(`${getArtworkBySearch}`, {
-      params: {
-        fields: ["id", "title"],
-        q: word,
-      },
+    .post<IPaginationList<IArtworkSearchInfo>>(`${getArtworkBySearch}`, {
+      fields: ["id", "title"],
+      query: { wildcard: { "title.keyword": { value: `${word}*` } } },
+      sort: [{ "title.keyword": { order: options.byName } }],
     })
     .then((response) => {
       return response.data as IPaginationList<IArtworkSearchInfo>;

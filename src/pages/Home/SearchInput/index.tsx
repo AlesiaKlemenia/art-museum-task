@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import paths from "@/constants/paths";
 import { useDebounce } from "@/hooks/useDebounce";
 import { IArtworkSearchInfo } from "@/interfaces/IArtworkSearchInfo";
+import SortToggle from "@/pages/Home/SearchInput/SortToggle";
 import { validateSchema } from "@/pages/Home/SearchInput/validateScheme";
 import { getApiSuggestions } from "@/utils/requests";
 
@@ -43,7 +44,9 @@ const SearchInput = (): JSX.Element => {
 
   const getSuggestions = async (word: string): Promise<void> => {
     if (word) {
-      const response = await getApiSuggestions(word);
+      const response = await getApiSuggestions(word, {
+        byName: "asc",
+      });
       setSuggestions(response.data);
     } else {
       setSuggestions([]);
@@ -97,6 +100,10 @@ const SearchInput = (): JSX.Element => {
       {errors.search?.message && (
         <p className="error-message">{errors.search?.message}</p>
       )}
+      <div className="sort-bar">
+        <span className="sort-label">Sort in descending order</span>
+        <SortToggle />
+      </div>
       {suggestions.length > 0 && (
         <div className="suggestions-container">
           {suggestions.map((suggestion, index) => (
