@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
 import { UseFormTrigger } from "react-hook-form";
 
-export const useDebounce = (
-  value: string,
+export const useDebounce = <T,>(
+  value: T,
   milliSeconds: number,
-  trigger: UseFormTrigger<{ search?: string }>,
-): string => {
-  const [debouncedValue, setDebouncedValue] = useState(value);
+  validator?: UseFormTrigger<{ search?: string }>,
+): T => {
+  const [debouncedValue, setDebouncedValue] = useState<T>(value);
 
   useEffect(() => {
     const handler = setTimeout(async () => {
-      if (!value) return;
+      if (value === "") return;
 
-      const isValid = await trigger("search");
-      if (!isValid) {
-        return;
+      if (validator) {
+        const isValid = await validator("search");
+        if (!isValid) {
+          return;
+        }
       }
 
       setDebouncedValue(value);
@@ -23,7 +25,7 @@ export const useDebounce = (
     return () => {
       clearTimeout(handler);
     };
-  }, [value, milliSeconds, trigger]);
+  }, [value, milliSeconds, validator]);
 
   return debouncedValue;
 };

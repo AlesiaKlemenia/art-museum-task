@@ -1,20 +1,20 @@
 import "./styles.scss";
 
 import { yupResolver } from "@hookform/resolvers/yup";
-import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 import paths from "@/constants/paths";
 import { useDebounce } from "@/hooks/useDebounce";
 import { IArtworkSearchInfo } from "@/interfaces/IArtworkSearchInfo";
+import useArtworkSuggestions from "@/pages/Home/SearchInput/hooks/useArtworkSuggestions";
+import { useSwitchSortElement } from "@/pages/Home/SearchInput/hooks/useSwitchSortElement";
 import SortToggle from "@/pages/Home/SearchInput/SortToggle";
 import { validateSchema } from "@/pages/Home/SearchInput/validateScheme";
-import { getApiSuggestions } from "@/utils/requests";
 
 const SearchInput = (): JSX.Element => {
   const [inputValue, setInputValue] = useState("");
-  const [suggestions, setSuggestions] = useState<IArtworkSearchInfo[]>([]);
   const [activeSuggestion, setActiveSuggestion] = useState(-1);
   const inputRef = useRef(null);
   const {
@@ -25,38 +25,17 @@ const SearchInput = (): JSX.Element => {
   } = useForm({
     resolver: yupResolver(validateSchema),
   });
-  const debouncedInputValue = useDebounce(inputValue, 250, trigger);
-
-  useEffect(() => {
-    const handleClick = (event: MouseEvent): void => {
-      if (
-        inputRef.current &&
-        !inputRef.current.contains(event.target as Node)
-      ) {
-        setSuggestions([]);
-      }
-    };
-    document.addEventListener("click", handleClick);
-    return () => {
-      document.removeEventListener("click", handleClick);
-    };
-  }, []);
-
-  const getSuggestions = async (word: string): Promise<void> => {
-    if (word) {
-      const response = await getApiSuggestions(word, {
-        byName: "asc",
-      });
-      setSuggestions(response.data);
-    } else {
-      setSuggestions([]);
-    }
-  };
-
-  useEffect(() => {
-    if (!debouncedInputValue) return;
-    getSuggestions(debouncedInputValue);
-  }, [debouncedInputValue, trigger]);
+  const {
+    sortChecked: nameSortChecked,
+    handleOnSortSwitchClick: handleOnNameSortSwitchClick,
+  } = useSwitchSortElement();
+  const debouncedInputValue = useDebounce<string>(inputValue, 250, trigger);
+  const debouncedNameSortChecked = useDebounce<boolean>(nameSortChecked, 500);
+  const { suggestions, setSuggestions } = useArtworkSuggestions({
+    debouncedInputValue,
+    inputRef,
+    nameSortChecked: debouncedNameSortChecked,
+  });
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setSuggestions([]);
@@ -102,7 +81,10 @@ const SearchInput = (): JSX.Element => {
       )}
       <div className="sort-bar">
         <span className="sort-label">Sort in descending order</span>
-        <SortToggle />
+        <SortToggle
+          value={nameSortChecked}
+          setValue={handleOnNameSortSwitchClick}
+        />
       </div>
       {suggestions.length > 0 && (
         <div className="suggestions-container">
