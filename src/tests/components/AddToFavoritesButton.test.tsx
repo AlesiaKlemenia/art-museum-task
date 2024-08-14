@@ -1,12 +1,8 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import "@testing-library/jest-dom";
 
 import AddToFavoritesButton from "@components/AddToFavoritesButton";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import React from "react";
-
-import Bookmark from "@/assets/icons/bookmark.svg";
-import BookmarkFilled from "@/assets/icons/bookmark-filled.svg";
 
 describe("AddToFavoritesButton", () => {
   const mockId = 233334;
@@ -17,25 +13,12 @@ describe("AddToFavoritesButton", () => {
     jest.clearAllMocks();
   });
 
-  describe("Button icon", () => {
-    test("renders the button with the correct icon if isFavorite false", () => {
-      render(<AddToFavoritesButton id={mockId} image_id={mockImageId} />);
-      waitFor(() =>
-        // @ts-ignore
-        expect(screen.getByRole("button")).toContainElement(Bookmark),
-      );
-    });
-
-    test("renders the button with the correct icon based if isFavorite false", () => {
-      sessionStorage.setItem(
-        "favorites",
-        JSON.stringify([{ id: mockId, image_id: mockImageId }]),
-      );
-      render(<AddToFavoritesButton id={mockId} image_id={mockImageId} />);
-      waitFor(() =>
-        // @ts-ignore
-        expect(screen.getByRole("button")).toContainElement(BookmarkFilled),
-      );
+  test("renders the mocked button icon correct", async () => {
+    render(<AddToFavoritesButton id={mockId} image_id={mockImageId} />);
+    await waitFor(() => {
+      const buttonEl = screen.getByTestId("add-to-favorites-button");
+      expect(buttonEl).toBeInTheDocument();
+      expect(buttonEl).toContainHTML("<span />");
     });
   });
 

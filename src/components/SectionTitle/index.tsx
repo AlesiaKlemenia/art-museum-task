@@ -7,7 +7,7 @@ const SectionTitle = ({
   bigGrayText,
 }: ISectionTitleProps): JSX.Element => {
   return (
-    <div className="section-title-wrapper">
+    <div className="section-title-wrapper" data-testid="section-title">
       <h3 className="small-title">{smallOrangeText}</h3>
       <h2 className="big-title">{bigGrayText}</h2>
     </div>
