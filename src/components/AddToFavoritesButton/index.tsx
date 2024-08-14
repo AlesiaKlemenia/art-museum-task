@@ -15,26 +15,20 @@ const AddToFavoritesButton = ({
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
   const toggleFavorite = (): void => {
-    const favoritesKey = "favorites";
-    const favorites: SessionStorage[] =
-      sessionStorageUtils.getFavorites(favoritesKey);
+    const favorites: SessionStorage[] = sessionStorageUtils.getFavorites();
 
     if (isFavorite) {
       sessionStorageUtils.setFavorites(
-        favoritesKey,
         favorites.filter((item) => item.id !== id),
       );
     } else {
-      sessionStorageUtils.setFavorites(favoritesKey, [
-        ...favorites,
-        { id, image_id },
-      ]);
+      sessionStorageUtils.setFavorites([...favorites, { id, image_id }]);
     }
     setIsFavorite(!isFavorite);
   };
 
   useEffect(() => {
-    const favorites = sessionStorageUtils.getFavorites("favorites");
+    const favorites = sessionStorageUtils.getFavorites();
     const isItemFavorite = favorites.some(
       (item: IArtworkBriefInfo) => item.id === id,
     );

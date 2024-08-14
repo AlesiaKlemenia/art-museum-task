@@ -3,13 +3,15 @@ export interface SessionStorage {
   image_id: string;
 }
 
-const getFavorites = (key: string): SessionStorage[] => {
-  const favoritesString = sessionStorage.getItem(key);
+const sessionStorageKey = "favorites";
+
+const getFavorites = (): SessionStorage[] => {
+  const favoritesString = sessionStorage.getItem(sessionStorageKey);
   return favoritesString ? JSON.parse(favoritesString) : [];
 };
 
-const setFavorites = (key: string, favorites: SessionStorage[]): void => {
-  sessionStorage.setItem(key, JSON.stringify(favorites));
+const setFavorites = (favorites: SessionStorage[]): void => {
+  sessionStorage.setItem(sessionStorageKey, JSON.stringify(favorites));
 };
 
 const sessionStorageUtils = {
