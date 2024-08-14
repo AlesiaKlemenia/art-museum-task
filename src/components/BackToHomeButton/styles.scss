@@ -1,0 +1,9 @@
+@use "@/utils/_variables.scss";
+
+.back-home-link {
+  padding: 10px;
+  color: variables.$white-color;
+  background-color: variables.$deep-orange;
+  border-radius: 10px;
+  margin-top: 10px;
+}

@@ -7,6 +7,7 @@ const ArtworkOverview = ({
   nacionality,
   dimensions,
   creditLine,
+  isPublic,
 }: IArtworkOverview): JSX.Element => {
   return (
     <div className="artwork-overview-wrapper">
@@ -15,6 +16,7 @@ const ArtworkOverview = ({
         <OverviewField field="Artist nacionality: " value={nacionality} />
         <OverviewField field="Dimensions: " value={dimensions} />
         <OverviewField field="Credit Line: " value={creditLine} />
+        <OverviewField field="" value={isPublic ? "Public" : "Not Public"} />
       </div>
     </div>
   );

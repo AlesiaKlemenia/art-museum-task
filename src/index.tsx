@@ -1,4 +1,5 @@
-import "@/global.scss";
+import "@/styles/reset.scss";
+import "@/styles/global.scss";
 
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";

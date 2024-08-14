@@ -7,7 +7,7 @@ import { ILayoutProps } from "@components/Layout/interfaces";
 const Layout = ({ children }: ILayoutProps): JSX.Element => (
   <>
     <Header />
-    <div className="wrapper">{children}</div>
+    <div className="container wrapper">{children}</div>
     <Footer />
   </>
 );
