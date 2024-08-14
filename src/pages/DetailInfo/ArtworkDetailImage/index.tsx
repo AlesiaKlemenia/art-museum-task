@@ -11,9 +11,15 @@ const ArtworkDetailImage = ({
   title,
 }: IArtworkDetailImageProps): JSX.Element => {
   return (
-    <div className="artwork-detail-info-image-wrapper">
-      <img className="artwork-detail-info-image" src={imageSrc} alt={title} />
-      <AddToFavoritesButton id={id} image_id={imageId} />
+    <div className="artwork-detail-info-image">
+      <div className="artwork-detail-info-image-wrapper">
+        <img
+          className="artwork-detail-info-artwork"
+          src={imageSrc}
+          alt={title}
+        />
+        <AddToFavoritesButton id={id} image_id={imageId} />
+      </div>
     </div>
   );
 };

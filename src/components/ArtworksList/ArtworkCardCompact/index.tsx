@@ -17,7 +17,7 @@ const ArtworkCardCompact = ({
   const imageURL = getImageUrl(image_id);
 
   return (
-    <div className="compact-card-wrapper">
+    <li className="compact-card-wrapper">
       <Link to={`${paths.detail.info.path}${id}`} className="compact-card-link">
         <div className="compact-image-wrapper">
           <img src={imageURL} alt={title} />
@@ -33,7 +33,7 @@ const ArtworkCardCompact = ({
         </div>
       </Link>
       <AddToFavoritesButton id={id} image_id={image_id} />
-    </div>
+    </li>
   );
 };
 

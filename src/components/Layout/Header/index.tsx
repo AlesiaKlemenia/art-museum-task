@@ -12,21 +12,26 @@ const Header = (): JSX.Element => {
   const location = useLocation();
 
   return (
-    <header className="header">
+    <header>
       <div className="container">
         <img src={museumLogoDark as string} alt="Art Museum Logo" />
         <nav>
-          <label className="menu-button" htmlFor="menu-toggle">
+          <div className="hamburger-menu">
             <input id="menu-toggle" type="checkbox" />
-            <span />
-          </label>
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+            <label className="menu-button" htmlFor="menu-toggle">
+              <span />
+            </label>
+          </div>
           <ul className="menu-box">
-            <li>
-              {location.pathname !== "/" && (
+            {location.pathname !== "/" && (
+              <li>
                 <Link to={paths.home}>
                   <MenuItem icon={<Home />} textField="Home" />
                 </Link>
-              )}
+              </li>
+            )}
+            <li>
               <Link to={paths.favorites}>
                 <MenuItem icon={<Bookmark />} textField="Your favorites" />
               </Link>

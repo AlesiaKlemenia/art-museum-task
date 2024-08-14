@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { getImageUrl } from "@/constants/url";
 import { IArtworkFullInfo } from "@/interfaces/IArtworkFullInformation";
 import ArtworkDetailImage from "@/pages/DetailInfo/ArtworkDetailImage";
+import ArtworkMainInfo from "@/pages/DetailInfo/ArtworkMainInfo";
 import ArtworkOverview from "@/pages/DetailInfo/ArtworkOverview";
 import { getArtworkDetailInfo } from "@/utils/requests";
 
@@ -35,19 +36,16 @@ const DetailInfo = (): JSX.Element => {
             title={artworkDetailInfo.data.title}
           />
           <div className="artwork-detail-info-wrapper">
-            <div className="artwork-main-info-wrapper">
-              <h2>{artworkDetailInfo.data.title}</h2>
-              <span className="artwork-main-info-artist-title">
-                {artworkDetailInfo.data.artist_title}
-              </span>
-              <span className="artwork-main-info-date">
-                {artworkDetailInfo.data.date_display}
-              </span>
-            </div>
+            <ArtworkMainInfo
+              title={artworkDetailInfo.data.title}
+              artistTitle={artworkDetailInfo.data.artist_title}
+              date={artworkDetailInfo.data.date_display}
+            />
             <ArtworkOverview
               nacionality={artworkDetailInfo.data.place_of_origin}
               dimensions={artworkDetailInfo.data.dimensions}
               creditLine={artworkDetailInfo.data.credit_line}
+              isPublic={artworkDetailInfo.data.is_public_domain}
             />
           </div>
         </div>

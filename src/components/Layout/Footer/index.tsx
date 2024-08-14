@@ -5,7 +5,7 @@ import museumLogoLight from "@/assets/img/museum-logo-light.png";
 
 const Footer = (): JSX.Element => {
   return (
-    <footer className="Footer">
+    <footer>
       <div className="container">
         <img src={museumLogoLight as string} alt="Art Museum Logo" />
         <ModsenLogo />

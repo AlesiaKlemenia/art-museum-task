@@ -6,3 +6,7 @@ export interface ISearchInputProps {
   requests: (word: string) => Promise<void>;
   setOptions: (value: IArtworkSearchInfo[]) => void;
 }
+
+export interface ISortParams {
+  byName: "desc" | "asc";
+}

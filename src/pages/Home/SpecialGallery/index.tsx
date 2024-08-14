@@ -3,7 +3,7 @@ import "./styles.scss";
 import React, { useCallback, useEffect, useState } from "react";
 
 import { IArtworkBriefInfo } from "@/interfaces/IArtworkBriefInfo";
-import ArtworkCard from "@/pages/Home/ArtworkCard";
+import ArtworkCard from "@/pages/Home/SpecialGallery/ArtworkCard";
 import PaginateBar from "@/pages/Home/SpecialGallery/PaginateBar";
 import { getSpecials } from "@/utils/requests";
 

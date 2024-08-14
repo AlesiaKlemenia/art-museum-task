@@ -1,19 +1,11 @@
-@use "@/utils/_variables.scss";
+@use "@/utils/variables";
 
 @import "https://fonts.googleapis.com/css2?family=Inter&Lexend+Deca:wght@100..900&display=swap";
 
 body {
-  margin: 0;
-  padding: 0;
-  border: 0;
-
   background-color: #fafafa;
-
-  font-family: "Lexend Deca", sans-serif;
-}
-
-#root {
-  min-height: 100%;
+  font-family: variables.$lexend-deca;
+  color: variables.$dark-gray;
 }
 
 a {
@@ -21,13 +13,13 @@ a {
 }
 
 h1 {
-  margin: 0;
-  font-size: 64px;
+  font-size: 4rem;
   font-weight: bold;
 }
 
 h2 {
-  margin: 0;
+  font-size: 2rem;
+  font-weight: normal;
 }
 
 button {
@@ -47,12 +39,9 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   max-width: 1280px;
   height: 100%;
-
   margin: 0 auto;
-
   @media screen and (max-width: 1280px) {
     .container {
       margin: 0 20px;
@@ -69,5 +58,5 @@ button {
 }
 
 .dark-gray {
-  color: variables.$dark-gray-color;
+  color: variables.$dark-gray;
 }

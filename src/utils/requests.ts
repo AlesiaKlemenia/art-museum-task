@@ -1,26 +1,27 @@
 import axios from "axios";
+import qs from "qs";
 
 import {
   getArtworkBriefInfo,
   getArtworkBySearch,
   getArtworkInfo,
-  getImageUrl,
 } from "@/constants/url";
 import { IArtworkBriefInfo } from "@/interfaces/IArtworkBriefInfo";
 import { IArtworkFullInfo } from "@/interfaces/IArtworkFullInformation";
 import { IArtworkSearchInfo } from "@/interfaces/IArtworkSearchInfo";
 import { IPaginationList } from "@/interfaces/IPaginationList";
 import { ISessionStorageData } from "@/interfaces/ISessionStorageData";
+import { ISortParams } from "@/pages/Home/SearchInput/interfaces";
 
 export const getApiSuggestions = async (
   word: string,
+  options: ISortParams,
 ): Promise<IPaginationList<IArtworkSearchInfo>> => {
   return axios
-    .get<IPaginationList<IArtworkSearchInfo>>(`${getArtworkBySearch}`, {
-      params: {
-        fields: ["id", "title"],
-        q: word,
-      },
+    .post<IPaginationList<IArtworkSearchInfo>>(`${getArtworkBySearch}`, {
+      fields: ["id", "title"],
+      query: { wildcard: { "title.keyword": { value: `${word}*` } } },
+      sort: [{ "title.keyword": { order: options.byName } }],
     })
     .then((response) => {
       return response.data as IPaginationList<IArtworkSearchInfo>;
@@ -69,15 +70,10 @@ export const getFavorite = async (
   const ids = favoriteIds.map((item) => item.id);
 
   return axios
-    .post<IPaginationList<IArtworkBriefInfo>>(`${getArtworkBySearch}`, {
-      query: {
-        bool: {
-          filter: {
-            ids: {
-              values: ids,
-            },
-          },
-        },
+    .get<IPaginationList<IArtworkBriefInfo>>(`${getArtworkBriefInfo}`, {
+      params: { ids },
+      paramsSerializer: (params) => {
+        return qs.stringify(params);
       },
     })
     .then((response) => {

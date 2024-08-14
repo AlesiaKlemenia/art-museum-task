@@ -1,0 +1,19 @@
+@use "@/utils/_variables.scss";
+
+.artwork-main-info-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .artwork-main-info-artist-title {
+    margin: 2rem 0 1rem 0;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: variables.$pale-orange;
+  }
+
+  .artwork-main-info-date {
+    font-weight: bold;
+    font-size: 1rem;
+  }
+}

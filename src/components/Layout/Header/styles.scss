@@ -8,14 +8,18 @@
   background-color: variables.$white-color;
 }
 
-header {
-  height: 127px;
+@mixin headerGradient {
   background: linear-gradient(
     90deg,
     rgba(52, 51, 51, 1) 17%,
     rgba(72, 72, 72, 1) 59%,
     rgba(40, 40, 40, 1) 99%
   );
+}
+
+header {
+  @include headerGradient;
+  height: 127px;
 }
 
 nav {
@@ -37,23 +41,19 @@ nav {
 
 #menu-toggle {
   opacity: 0;
-
   &:checked ~ .menu-button > span {
     transform: rotate(45deg);
   }
-
   &:checked ~ .menu-button > span::before {
     top: 0;
     transform: rotate(0);
     background: variables.$white-color;
   }
-
   &:checked ~ .menu-button > span::after {
     top: 0;
     transform: rotate(90deg);
     background: variables.$white-color;
   }
-
   &:checked ~ .menu-button {
     visibility: visible;
     left: 0;
@@ -62,32 +62,23 @@ nav {
 }
 
 .menu-button {
-  transition-duration: 0.25s;
-  box-sizing: border-box;
   display: flex;
   align-items: center;
   position: relative;
-  width: 26px;
-  height: 26px;
+  width: 1.625rem;
+  height: 1.625rem;
   cursor: pointer;
   z-index: 2;
+  transition-duration: 0.25s;
+  box-sizing: border-box;
 
-  span {
-    @include burgerSpan;
-
-    &::before {
-      @include burgerSpan;
-      content: "";
-      top: -8px;
-      transition-duration: 0.25s;
-    }
-
-    &::after {
-      @include burgerSpan;
-      content: "";
-      top: 8px;
-      transition-duration: 0.25s;
-    }
+  .menu-btn > span,
+  .menu-btn > span::before,
+  .menu-btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 1.625rem;
   }
 
   @media screen and (min-width: 480px) {
@@ -95,23 +86,36 @@ nav {
   }
 }
 
+.menu-button span {
+  @include burgerSpan;
+  &::before,
+  &::after {
+    @include burgerSpan;
+    content: "";
+    transition-duration: 0.25s;
+  }
+  &::before {
+    top: -8px;
+  }
+  &::after {
+    top: 8px;
+  }
+}
+
 .menu-box {
   display: flex;
   flex-direction: row;
-  list-style-type: none;
+  gap: 16px;
 
   @media screen and (max-width: 480px) {
+    @include headerGradient;
     flex-direction: column;
     position: fixed;
     visibility: hidden;
-    top: 0;
+    width: 100%;
+    top: 127px;
     left: 0;
-    height: 15em;
-    margin: 0 0 0 0;
-    padding: 0.6em 0;
     text-align: center;
-    background-color: #2d303a;
-    box-shadow: 1px 0 6px rgba(0, 0, 0, 0.2);
     z-index: 1;
     transition-duration: 0.5s;
   }
