@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Bookmark from "@/assets/icons/bookmark.svg";
 import BookmarkFilled from "@/assets/icons/bookmark-filled.svg";
 import { IArtworkBriefInfo } from "@/interfaces/IArtworkBriefInfo";
+import sessionStorageUtils, { SessionStorage } from "@/utils/sessionStorage";
 
 const AddToFavoritesButton = ({
   id,
@@ -14,26 +15,26 @@ const AddToFavoritesButton = ({
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
   const toggleFavorite = (): void => {
-    const favorites = JSON.parse(sessionStorage.getItem("favorites") || "[]");
+    const favoritesKey = "favorites";
+    const favorites: SessionStorage[] =
+      sessionStorageUtils.getFavorites(favoritesKey);
 
     if (isFavorite) {
-      const updatedFavorites = favorites.filter(
-        (item: IArtworkBriefInfo) => item.id !== id,
+      sessionStorageUtils.setFavorites(
+        favoritesKey,
+        favorites.filter((item) => item.id !== id),
       );
-      sessionStorage.setItem("favorites", JSON.stringify(updatedFavorites));
     } else {
-      const newFavorite = {
-        id,
-        image_id,
-      };
-      const updatedFavorites = [...favorites, newFavorite];
-      sessionStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      sessionStorageUtils.setFavorites(favoritesKey, [
+        ...favorites,
+        { id, image_id },
+      ]);
     }
     setIsFavorite(!isFavorite);
   };
 
   useEffect(() => {
-    const favorites = JSON.parse(sessionStorage.getItem("favorites") || "[]");
+    const favorites = sessionStorageUtils.getFavorites("favorites");
     const isItemFavorite = favorites.some(
       (item: IArtworkBriefInfo) => item.id === id,
     );

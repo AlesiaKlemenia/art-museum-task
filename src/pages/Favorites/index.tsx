@@ -25,7 +25,6 @@ const Favorites = (): JSX.Element => {
         bigGrayText="Your favorites list"
       />
       <ArtworksList type="favorites" />
-      <div />
     </Layout>
   );
 };
