@@ -1,10 +1,10 @@
 import axios from "axios";
+import qs from "qs";
 
 import {
   getArtworkBriefInfo,
   getArtworkBySearch,
   getArtworkInfo,
-  getImageUrl,
 } from "@/constants/url";
 import { IArtworkBriefInfo } from "@/interfaces/IArtworkBriefInfo";
 import { IArtworkFullInfo } from "@/interfaces/IArtworkFullInformation";
@@ -69,15 +69,10 @@ export const getFavorite = async (
   const ids = favoriteIds.map((item) => item.id);
 
   return axios
-    .post<IPaginationList<IArtworkBriefInfo>>(`${getArtworkBySearch}`, {
-      query: {
-        bool: {
-          filter: {
-            ids: {
-              values: ids,
-            },
-          },
-        },
+    .get<IPaginationList<IArtworkBriefInfo>>(`${getArtworkBriefInfo}`, {
+      params: { ids },
+      paramsSerializer: (params) => {
+        return qs.stringify(params);
       },
     })
     .then((response) => {
