@@ -4,12 +4,12 @@ module.exports = {
   moduleFileExtensions: ["ts", "tsx", "js"],
   moduleNameMapper: {
     "\\.(css|png)$": "identity-obj-proxy",
-    "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-      "<rootDir>/__mocks__/fileMock.js",
+    "\\.svg": "<rootDir>/src/tests/__mocks__/svgrMock.tsx",
     "^@/(.*)$": "<rootDir>/src/$1",
     "^@/{0,1}components/(.*)$": "<rootDir>/src/components/$1",
     "^@/{0,1}constants/(.*)$": "<rootDir>/src/constants/$1",
     "^@/tests/(.*)$": "<rootDir>/src/tests/$1",
+    "^.+\\.(css|less|scss)$": "babel-jest",
   },
   collectCoverageFrom: ["<rootDir>/**/*.{ts, tsx}"],
   roots: ["<rootDir>"],
@@ -17,6 +17,9 @@ module.exports = {
   transform: {
     "^.+\\.(ts|tsx)$": "ts-jest",
   },
-  snapshotSerializers: ["enzyme-to-json/serializer"],
-  setupFilesAfterEnv: ["./jest.setup.js", "@testing-library/jest-dom"],
+  setupFilesAfterEnv: [
+    "mock-local-storage",
+    "./jest.setup.js",
+    "@testing-library/jest-dom",
+  ],
 };
