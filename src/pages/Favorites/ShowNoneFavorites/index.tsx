@@ -1,5 +1,4 @@
 import BackToHomeButton from "@components/BackToHomeButton";
-import React from "react";
 
 import BookmarkBig from "@/assets/icons/bookmark-big.svg";
 

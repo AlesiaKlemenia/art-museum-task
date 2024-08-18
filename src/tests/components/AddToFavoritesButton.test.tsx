@@ -2,7 +2,6 @@ import "@testing-library/jest-dom";
 
 import AddToFavoritesButton from "@components/AddToFavoritesButton";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import React from "react";
 
 describe("AddToFavoritesButton", () => {
   const mockId = 233334;

@@ -1,6 +1,6 @@
 import "./styles.scss";
 
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { IArtworkBriefInfo } from "@/interfaces/IArtworkBriefInfo";
 import ArtworkCard from "@/pages/Home/SpecialGallery/ArtworkCard";

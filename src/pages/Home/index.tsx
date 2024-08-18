@@ -3,7 +3,6 @@ import "./styles.scss";
 import ArtworksList from "@components/ArtworksList";
 import Layout from "@components/Layout";
 import SectionTitle from "@components/SectionTitle";
-import React from "react";
 
 import SearchInput from "@/pages/Home/SearchInput";
 import SpecialGallery from "@/pages/Home/SpecialGallery";

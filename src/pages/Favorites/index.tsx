@@ -1,7 +1,6 @@
 import "./styles.scss";
 
 import Layout from "@components/Layout";
-import React from "react";
 
 import ShowFavorites from "@/pages/Favorites/ShowFavorites";
 import ShowNoneFavorites from "@/pages/Favorites/ShowNoneFavorites";
