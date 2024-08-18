@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import Bookmark from "@/assets/icons/bookmark.svg";
 import Home from "@/assets/icons/home.svg";
-import museumLogoDark from "@/assets/img/museum-logo-dark.png";
+import { images } from "@/constants/images";
 import paths from "@/constants/paths";
 
 const Header = (): JSX.Element => {
@@ -14,7 +14,7 @@ const Header = (): JSX.Element => {
   return (
     <header>
       <div className="container">
-        <img src={museumLogoDark as string} alt="Art Museum Logo" />
+        <img src={images.darkLogo} alt="Art Museum Logo" />
         <nav>
           <div className="hamburger-menu">
             <input id="menu-toggle" type="checkbox" />

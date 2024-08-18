@@ -1,7 +1,6 @@
 import "@testing-library/jest-dom";
 
 import { render, screen, waitFor } from "@testing-library/react";
-import React from "react";
 import { MemoryRouter } from "react-router-dom";
 
 import Favorites from "@/pages/Favorites";

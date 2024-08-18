@@ -2,7 +2,7 @@ import "./styles.scss";
 
 import ArtworkCardCompact from "@components/ArtworksList/ArtworkCardCompact";
 import { IArtworksListProps } from "@components/ArtworksList/interfaces";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { IArtworkBriefInfo } from "@/interfaces/IArtworkBriefInfo";
 import { ISessionStorageData } from "@/interfaces/ISessionStorageData";
